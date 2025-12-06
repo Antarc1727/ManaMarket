@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mana Market - Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="topnav">
+      <div class="topnav-left">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="topnav-right">
+        <a href="store.html">Store</a>
+        <a class="active" href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a href="orders.html">My Orders</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Log In</a>
+        <a href="contactus.html">Contact</a>
+        <span id="userEmailDisplay" class="email-display" style="padding: 14px 16px; color: #ffafcc; font-weight: bold; display:none;"></span>
+        <a href="#" id="logoutBtn" style="display:none;">Log Out</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3 class="bitcount-grid-double">Your Cart</h3>
+      
+      <div id="cartContent">
+        <p class="empty-cart-msg epunda-slab-font">Your cart is empty.</p>
+      </div>
+
+      <div id="cartFooter" style="display:none;">
+        <div class="cart-total bitcount-grid-double">Total: $<span id="cartTotal">0.00</span></div>
+        <div style="text-align:center; margin-top:20px;">
+            <button id="checkoutBtn" class="buy-btn">Checkout</button>
+        </div>
+      </div>
+
+    </div>
+
+    <button id="scrollTopBtn">Scroll To Top</button>
+
+    <audio id="bgMusic" src="bliss.mp3" loop></audio>
+    <button id="musicToggleBtn">Music ON</button>
+
+    <div id="toastContainer"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

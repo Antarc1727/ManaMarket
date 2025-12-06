@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mana Market - Home</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="topnav">
+      <div class="topnav-left">
+        <a class="active" href="index.html">Home</a>
+      </div>
+      <div class="topnav-right">
+        <a href="store.html">Store</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a href="orders.html">My Orders</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Log In</a>
+        <a href="contactus.html">Contact</a>
+        <span id="userEmailDisplay" class="email-display" style="padding: 14px 16px; color: #ffafcc; font-weight: bold; display:none;"></span>
+        <a href="#" id="logoutBtn" style="display:none;">Log Out</a>
+      </div>
+    </div>
+
+    <div class="banner-wrap">
+      <img class="site-banner" src="cinamoroll.jpg" alt="Cinnamoroll banner">
+    </div>
+
+    <div class="container">
+      <h3 class="bitcount-grid-double">Welcome, Traveler!</h3>
+      <p class="epunda-slab-font">
+        Welcome to Mana Market! This website is your indie-friendly haven for digital adventures.
+        We curate hand-picked, creatively crafted games from passionate developers, prioritizing charm, depth, and replayability.<br><br>
+        Here, you'll find a variety with a personal, welcoming twist: fair pricing, thoughtful recommendations,
+        and a community that cherishes indie magic as much as I do. Every purchase supports creators and fuels new journeys.
+        Explore, discover, and let your next favorite game find you.
+      </p>
+    </div>
+
+    <div class="banner-wrap">
+      <img class="site-banner" src="cinamoroll2.jpg" alt="2nd Cinnamoroll banner">
+    </div>
+
+    <div class="container">
+      <h3 class="bitcount-grid-double">NEWS AND UPDATES</h3>
+      <div class="game-banner-wrap">
+        <img class="site-banner" src="hades.jpg">
+      </div>
+      <p class="epunda-slab-font">
+        Hades received multiple updates, including the 1.0 release. These updates added numerous new features and improvements.
+        Patch notes detailing these changes are available. The updates include fixes, and enhancements that have been implemented
+        over time. You can find detailed information about each update by checking the patch notes, which document all the changes
+        made to the game.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="game-banner-wrap">
+        <img class="site-banner" src="Hades-2.jpg">
+      </div>
+      <p class="epunda-slab-font">
+        Hades 2 has received multiple updates post-launch, including major updates. These updates feature new content such as the
+        final confrontation of the surface route, additional Olympian Boons, and new Animal Familiars. Patch notes are available,
+        with the most recent patch being live. The updates demonstrate the ongoing development and expansion of the game, adding
+        significant gameplay elements.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="game-banner-wrap">
+        <img class="site-banner" src="terraria_update.jpg">
+      </div>
+      <p class="epunda-slab-font">
+        The next major update for Terraria, version 1.4.5, is planned to be released between mid-December 2025 and the end of January
+        2026. Recent updates include the 'Labor of Love' update, Steam Deck optimization, a crossover with Don't Starve Together, and
+        Steam Workshop support. The information provided focuses primarily on the desktop version of the game.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="game-banner-wrap">
+        <img class="site-banner" src="dinkum_update.jpg">
+      </div>
+      <p class="epunda-slab-font">
+        Dinkum received a hotfix on November 3, 2025, addressing an animal spawning bug near deep water. Another update on April 22, 2025,
+        removed a note about pergola placement. While there aren't concrete announcements about future updates, the developer has indicated
+        that the 1.0 update wasn't the end of content releases. 
+      </p>
+    </div>
+
+    <button id="scrollTopBtn">Scroll To Top</button>
+
+    <audio id="bgMusic" src="bliss.mp3" loop></audio>
+    <button id="musicToggleBtn">Music ON</button>
+
+    <div id="toastContainer"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

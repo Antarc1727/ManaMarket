@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mana Market - Payment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="topnav">
+      <div class="topnav-left">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="topnav-right">
+        <a href="store.html">Store</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a href="orders.html">My Orders</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Log In</a>
+        <a href="contactus.html">Contact</a>
+        <span id="userEmailDisplay" class="email-display" style="padding: 14px 16px; color: #ffafcc; font-weight: bold; display:none;"></span>
+        <a href="#" id="logoutBtn" style="display:none;">Log Out</a>
+      </div>
+    </div>
+
+    <div class="container">
+        <h3 class="bitcount-grid-double">Complete Your Payment</h3>
+        
+        <div class="payment-card epunda-slab-font">
+            <p style="font-size: 1.2em; color: #555;">Scan the QR code below to complete your order payment.</p>
+            <p style="font-weight: bold; color: #a87aa0;">Order Total: <span id="paymentTotal"></span></p>
+
+            <div class="qr-code-box">
+                <img src="qr_code.jpg" alt="Payment QR Code Placeholder" style="width: 250px; height: 250px;" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/250x250/cdb4db/4d4d4d?text=QR+Code+Placeholder';">
+            </div>
+
+            <p style="font-size: 0.9em; color: #777;">
+                <strong style="color: red;">DO NOT</strong> refresh or close this page.
+            </p>
+            
+            <p id="countdown">Redirecting in 15 seconds...</p>
+        </div>
+    </div>
+
+    <button id="scrollTopBtn">Scroll To Top</button>
+    <div id="toastContainer"></div> 
+
+    <audio id="bgMusic" src="bliss.mp3" loop></audio>
+    <button id="musicToggleBtn">Music ON</button>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const countdownEl = document.getElementById('countdown');
+            const paymentTotalEl = document.getElementById('paymentTotal');
+            const countdownTime = 15;
+            let timeRemaining = countdownTime;
+
+            const params = new URLSearchParams(window.location.search);
+            const total = params.get('total') || '0.00';
+            paymentTotalEl.textContent = `$${total}`;
+
+            function updateCountdown() {
+                if (timeRemaining <= 0) {
+                    clearInterval(timer);
+                    window.location.href = `purchase.html?total=${total}`;
+                    return;
+                }
+                
+                countdownEl.textContent = `Redirecting in ${timeRemaining} seconds...`;
+                timeRemaining--;
+            }
+
+            const timer = setInterval(updateCountdown, 1000);
+            updateCountdown(); 
+        });
+    </script>
+  </body>
+</html>

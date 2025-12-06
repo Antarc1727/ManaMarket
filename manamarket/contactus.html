@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mana Market - Contact</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="topnav">
+      <div class="topnav-left">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="topnav-right">
+        <a href="store.html">Store</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a href="orders.html">My Orders</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Log In</a>
+        <a class="active" href="contactus.html">Contact</a>
+        <span id="userEmailDisplay" class="email-display" style="padding: 14px 16px; color: #ffafcc; font-weight: bold; display:none;"></span>
+        <a href="#" id="logoutBtn" style="display:none;">Log Out</a>
+      </div>
+    </div>
+
+    <center>
+    <div class="container" id="contact">
+        <h3 class="bitcount-grid-double">Contact</h3>
+        <form id="contactForm" class="epunda-slab-font">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+            <button type="submit" class="epunda-slab-font">Submit</button>
+        </form>
+
+        <p id="thankYouMsg" class="epunda-slab-font" style="display:none; color:rgb(129, 214, 129); font-weight:bold;">
+        Thanks for contacting us! We'll get back to you soon.
+        </p>
+    </div>
+    </center>
+
+
+    <audio id="bgMusic" src="bliss.mp3" loop></audio>
+    <button id="musicToggleBtn">Music ON</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

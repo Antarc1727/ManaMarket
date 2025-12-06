@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mana Market - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="topnav">
+    <div class="topnav-left">
+        <a href="index.html">Home</a>
+    </div>
+    <div class="topnav-right">
+        <a href="store.html">Store</a>
+        <a href="store.html">Cart</a>
+        <a href="orders.html">My Orders</a>
+        <a class="active" href="signup.html">Sign Up</a>
+        <a href="login.html">Log In</a>
+        <a href="contactus.html">Contact</a>
+
+        <span id="userEmailDisplay" class="email-display" style="padding: 14px 16px; color: #ffafcc; font-weight: bold; display:none;"></span>
+        <a href="#" id="logoutBtn" style="display:none;">Log Out</a>
+    </div>
+</div>
+
+    <center>
+    <div class="container" id="login">
+        <h3 class="bitcount-grid-double">Sign Up</h3>
+
+        <form id="signupForm" class="epunda-slab-font login-form" method="POST" action="signup.php">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="username" placeholder="you@example.com">
+            </div>
+
+            <div class="field">
+              <label for="password">Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="password" name="password" required autocomplete="new-password" placeholder="Enter your password (min 6 chars)" minlength="6">
+                <button type="button" id="togglePwd" class="toggle-btn" aria-pressed="false">Show</button>
+              </div>
+            </div>
+
+            <button type="submit" class="epunda-slab-font signin-btn">Sign Up</button>
+        </form>
+
+        <p id="loginMsg" class="epunda-slab-font" style="display:none; color:rgb(129, 214, 129); font-weight:bold;">
+          Registered - welcome traveler!
+        </p>
+
+        <div class="small-link">Already have an account? <a href="login.html">Log In</a></div>
+
+    </div>
+    </center>
+
+    <audio id="bgMusic" src="bliss.mp3" loop></audio>
+    <button id="musicToggleBtn">Music ON</button>
+    <div id="toastContainer"></div> 
+
+    <script src="script.js"></script>
+  </body>
+</html>

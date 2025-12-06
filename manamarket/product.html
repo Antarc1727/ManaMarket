@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mana Market - Product</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="topnav">
+      <div class="topnav-left">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="topnav-right">
+        <a href="store.html">Store</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a href="orders.html">My Orders</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Log In</a>
+        <a href="contactus.html">Contact</a>
+        <span id="userEmailDisplay" class="email-display" style="padding: 14px 16px; color: #ffafcc; font-weight: bold; display:none;"></span>
+        <a href="#" id="logoutBtn" style="display:none;">Log Out</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3 class="bitcount-grid-double">Product Details</h3>
+
+      <div id="productCard" style="text-align:center;">
+        
+        <img id="productImg" src="" alt="Product" style="max-width:300px; border-radius:12px; display:none; margin:20px auto; box-shadow:0 8px 16px rgba(0,0,0,0.15);">
+        
+        <p id="productName" class="epunda-slab-font" style="font-size:24px; font-weight:800; margin-bottom:5px;"></p>
+        <p id="productPrice" style="font-size:20px; color:#8a5f84; font-weight:800;"></p>
+        
+        <div style="max-width:500px; margin:20px auto; text-align:left; line-height:1.6; padding:0 10px;">
+            <p id="productDesc" class="epunda-slab-font" style="font-size:16px; color:#444;"></p>
+        </div>
+
+        <div style="margin-top:28px; display:flex; gap:12px; justify-content:center;">
+          <button id="addToCartBtn" class="buy-btn" style="width:200px">Add to Cart</button>
+          <a class="buy-btn secondary-btn" href="store.html" style="width:200px; text-align:center;">Back to Store</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="toastContainer"></div> 
+
+    <button id="scrollTopBtn">Scroll To Top</button>
+
+    <audio id="bgMusic" src="bliss.mp3" loop></audio>
+    <button id="musicToggleBtn">Music ON</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

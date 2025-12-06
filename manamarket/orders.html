@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mana Market - My Orders</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <style>
+      /* --- Custom Styles for Orders Page --- */
+      .orders-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .orders-container h3 {
+        color: #a87aa0; /* Matches your theme color */
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ffafcc;
+      }
+      .orders-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px; /* Space between rows */
+        text-align: left;
+        font-size: 0.95em;
+      }
+      .orders-table th, .orders-table td {
+        padding: 12px 15px;
+      }
+      .orders-table th {
+        background-color: #99e0e0; /* Light teal header */
+        color: #2c3e50;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: none;
+      }
+      .orders-table thead tr {
+        border-radius: 10px 10px 0 0;
+        overflow: hidden;
+      }
+      .orders-table tbody tr {
+        background-color: #fcfcfc;
+        border-radius: 8px;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .orders-table tbody tr:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+      .status-pending { background-color: #ffe082; color: #333; padding: 5px 10px; border-radius: 5px; font-weight: bold; }
+      .status-shipped { background-color: #81c784; color: white; padding: 5px 10px; border-radius: 5px; font-weight: bold; }
+      .status-delivered { background-color: #4db6ac; color: white; padding: 5px 10px; border-radius: 5px; font-weight: bold; }
+      .status-cancelled { background-color: #ef5350; color: white; padding: 5px 10px; border-radius: 5px; font-weight: bold; }
+      
+      /* First and last column styling */
+      .orders-table th:first-child, .orders-table td:first-child { border-radius: 8px 0 0 8px; }
+      .orders-table th:last-child, .orders-table td:last-child { border-radius: 0 8px 8px 0; }
+      
+      #ordersContent p {
+          margin-top: 20px;
+          color: #777;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation Bar (Copied from payment_qr.html for consistency) -->
+    <div class="topnav">
+      <div class="topnav-left">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="topnav-right">
+        <a href="store.html">Store</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a class="active" href="orders.html">My Orders</a> <!-- Added link here -->
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Log In</a>
+        <a href="contactus.html">Contact</a>
+        <span id="userEmailDisplay" class="email-display" style="padding: 14px 16px; color: #ffafcc; font-weight: bold; display:none;"></span>
+        <a href="#" id="logoutBtn" style="display:none;">Log Out</a>
+      </div>
+    </div>
+
+    <div class="orders-container epunda-slab-font">
+        <h3 class="bitcount-grid-double">Your Order History</h3>
+        
+        <div id="loadingMessage" style="color: #a87aa0; font-weight: bold;">Loading orders...</div>
+        <div id="ordersContent">
+            <!-- Order table will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <button id="scrollTopBtn">Scroll To Top</button>
+    <div id="toastContainer"></div> 
+
+    <audio id="bgMusic" src="bliss.mp3" loop></audio>
+    <button id="musicToggleBtn">Music ON</button>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ordersContent = document.getElementById('ordersContent');
+            const loadingMessage = document.getElementById('loadingMessage');
+            
+            // Get the user's email from localStorage (simulated session)
+            const userEmail = localStorage.getItem('loggedInUserEmail');
+
+            if (!userEmail) {
+                loadingMessage.style.display = 'none';
+                ordersContent.innerHTML = '<p>You must be logged in to view your order history. Please <a href="login.html" style="color:#a87aa0;">Log In</a>.</p>';
+                return;
+            }
+
+            // Function to fetch and render orders
+            async function fetchAndRenderOrders() {
+                loadingMessage.style.display = 'block';
+                
+                try {
+                    // Call the PHP script, passing the user email (INSECURE for production!)
+                    const response = await fetch(`fetch_orders.php?email=${encodeURIComponent(userEmail)}`);
+                    const data = await response.json();
+
+                    loadingMessage.style.display = 'none';
+
+                    if (data.success && data.orders.length > 0) {
+                        renderOrdersTable(data.orders);
+                    } else if (data.success && data.orders.length === 0) {
+                        ordersContent.innerHTML = '<p>You have not placed any orders yet. Check out the <a href="store.html" style="color:#a87aa0;">Store</a>!</p>';
+                    } else {
+                        ordersContent.innerHTML = `<p style="color:red;">Error loading orders: ${data.error || 'An unknown error occurred.'}</p>`;
+                    }
+
+                } catch (error) {
+                    loadingMessage.style.display = 'none';
+                    ordersContent.innerHTML = `<p style="color:red;">Network or server error occurred: ${error.message}</p>`;
+                }
+            }
+
+            // Function to build the HTML table
+            function renderOrdersTable(orders) {
+                let tableHtml = `
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                orders.forEach(order => {
+                    // Determine the CSS class based on the order status
+                    const statusClass = order.order_status.toLowerCase().replace(/\s/g, '-');
+                    
+                    tableHtml += `
+                        <tr>
+                            <td>#${order.order_id}</td>
+                            <td>${order.order_date}</td>
+                            <td>${order.total_amount}</td>
+                            <td><span class="status-${statusClass}">${order.order_status}</span></td>
+                            <td><button class="remove-btn-styled" style="background-color: #a87aa0;">View</button></td>
+                        </tr>
+                    `;
+                });
+
+                tableHtml += `</tbody></table>`;
+                ordersContent.innerHTML = tableHtml;
+            }
+
+            // Execute the fetch
+            fetchAndRenderOrders();
+        });
+    </script>
+  </body>
+</html>

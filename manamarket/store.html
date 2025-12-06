@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mana Market - Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="topnav">
+      <div class="topnav-left">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="topnav-right">
+        <a class="active" href="store.html">Store</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a href="orders.html">My Orders</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Log In</a>
+        <a href="contactus.html">Contact</a>
+        <span id="userEmailDisplay" class="email-display" style="padding: 14px 16px; color: #ffafcc; font-weight: bold; display:none;"></span>
+        <a href="#" id="logoutBtn" style="display:none;">Log Out</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3 class="bitcount-grid-double">Store</h3>
+
+      <div class="product-list">
+
+        <div class="product-item">
+            <img class="product-image" src="Hades.jpg" alt="Hades">
+            <p class="product-name epunda-slab-font">Hades</p>
+            <p class="product-price">$19.99</p>
+            <a class="buy-btn" href="product.html?product=Hades&price=19.99&img=Hades.jpg">View Details</a>
+        </div>
+
+        <div class="product-item">
+            <img class="product-image" src="Hades-2.jpg" alt="Hades 2">
+            <p class="product-name epunda-slab-font">Hades 2</p>
+            <p class="product-price">$24.99</p>
+            <a class="buy-btn" href="product.html?product=Hades%202&price=24.99&img=Hades-2.jpg">View Details</a>
+        </div>
+
+        <div class="product-item">
+            <img class="product-image" src="Terraria.jpg" alt="Terraria">
+            <p class="product-name epunda-slab-font">Terraria</p>
+            <p class="product-price">$9.99</p>
+            <a class="buy-btn" href="product.html?product=Terraria&price=9.99&img=Terraria.jpg">View Details</a>
+        </div>
+
+        <div class="product-item">
+            <img class="product-image" src="Dinkum.png" alt="Dinkum">
+            <p class="product-name epunda-slab-font">Dinkum</p>
+            <p class="product-price">$14.99</p>
+            <a class="buy-btn" href="product.html?product=Dinkum&price=14.99&img=Dinkum.png">View Details</a>
+        </div>
+
+      </div>
+    </div>
+
+    <button id="scrollTopBtn">Scroll To Top</button>
+
+    <audio id="bgMusic" src="bliss.mp3" loop></audio>
+    <button id="musicToggleBtn">Music ON</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

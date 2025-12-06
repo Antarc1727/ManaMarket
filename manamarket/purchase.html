@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mana Market - Purchase</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="topnav">
+      <div class="topnav-left">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="topnav-right">
+        <a href="store.html">Store</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a href="orders.html">My Orders</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Log In</a>
+        <a href="contactus.html">Contact</a>
+        <span id="userEmailDisplay" class="email-display" style="padding: 14px 16px; color: #ffafcc; font-weight: bold; display:none;"></span>
+        <a href="#" id="logoutBtn" style="display:none;">Log Out</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3 class="bitcount-grid-double" style="color: #4BB543;">Purchase Successful!</h3>
+      
+      <div style="text-align: center; padding: 20px; border: 2px solid #4BB543; border-radius: 12px; background-color: #e6ffed;">
+          <p class="epunda-slab-font" style="font-size: 1.5em; color: #333; font-weight: bold;">
+              Thank you for your order, adventurer!
+          </p>
+          <p class="epunda-slab-font" style="font-size: 1.2em; color: #555;">
+              Your total purchase amount was: 
+              <strong id="purchaseTotal" style="color: #8a5f84; font-size: 1.2em;">$0.00</strong>
+          </p>
+          <p class="epunda-slab-font" style="margin-top: 20px;">
+              Your physical copies of your games will be shipped to you within 5-7 business days.
+              You will receive a confirmation email with tracking information once your order has been dispatched.
+          </p>
+      </div>
+
+      <div style="margin-top: 30px;">
+          <a href="store.html" class="buy-btn" style="text-decoration:none; width: 200px;">Continue Shopping</a>
+      </div>
+
+    </div>
+
+    <button id="scrollTopBtn"></button>
+
+    <audio id="bgMusic" src="bliss.mp3" loop></audio>
+    <button id="musicToggleBtn">Music ON</button>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const totalEl = document.getElementById('purchaseTotal');
+            if (totalEl) {
+                const params = new URLSearchParams(window.location.search);
+                const total = params.get('total') || '0.00';
+                totalEl.textContent = `$${total}`;
+            }
+
+            if (typeof updateCartCount === 'function') {
+                updateCartCount();
+            }
+        });
+    </script>
+  </body>
+</html>
